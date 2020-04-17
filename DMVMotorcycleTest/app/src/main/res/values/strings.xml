@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Motorcycle Test</string>
+    <string name="btn_new_test">Start test</string>
+    <string name="file">source_file.json</string>
+    <string name="standard_charsets">UTF-8</string>
+
+    <!-- For dialog -->
+    <string name="question_start">Start a test?</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="question_check">Submit final answers?</string>
+    <string name="submit">Submit</string>
+    <string name="alert">Please answer all of the following questions.</string>
+    <string name="ok">OK</string>
+
+    <!-- For CardView -->
+    <string name="q">Q %1$d: %2$s</string>
+    <string name="a">A: %1$s</string>
+    <string name="b">B: %1$s</string>
+    <string name="c">C: %1$s</string>
+
+    <!-- For result -->
+    <string name="fail">Fail</string>
+    <string name="pass">Pass</string>
+</resources>

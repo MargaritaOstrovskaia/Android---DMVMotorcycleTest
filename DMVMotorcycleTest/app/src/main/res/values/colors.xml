@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#5D4F73</color>
+    <color name="colorPrimaryDark">#4E295B</color>
+    <color name="colorAccent">#5D4F73</color>
+
+    <!-- For CardView -->
+    <color name="black_text_color">#000000</color>
+    <color name="answer_text_color">#6B617A</color>
+    <color name="right_color">#b36b8e23</color>
+    <color name="wrong_color">#b3971b10</color>
+    <color name="card_background_color_1">#FFF0EB</color>
+    <color name="card_background_color_2">#EBF6FF</color>
+
+    <!-- For result -->
+    <color name="pass">#5BB07F</color>
+    <color name="fail">#E37D7D</color>
+</resources>

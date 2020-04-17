@@ -1,0 +1,18 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- For CardView -->
+    <dimen name="card_margin_vertical">16dp</dimen>
+    <dimen name="card_margin_horizontal">32dp</dimen>
+    <dimen name="card_elevation">5dp</dimen>
+    <dimen name="card_corner_radius">5dp</dimen>
+    <dimen name="card_padding">10dp</dimen>
+    <dimen name="card_margin_top">10dp</dimen>
+    <dimen name="padding_left_rb">5dp</dimen>
+    <dimen name="text_question_size">16sp</dimen>
+    <dimen name="text_answer_size">13sp</dimen>
+
+    <!-- For result -->
+    <dimen name="result_text">24sp</dimen>
+    <dimen name="result_margin">10dp</dimen>
+</resources>
