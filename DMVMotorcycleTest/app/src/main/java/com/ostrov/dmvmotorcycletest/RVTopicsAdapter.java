@@ -37,7 +37,7 @@ public class RVTopicsAdapter extends RecyclerView.Adapter<RVTopicsAdapter.TopicV
 
     @Override
     public void onBindViewHolder(@NonNull TopicViewHolder holder, final int position) {
-        holder.bind(topics.get(position), listener);
+        holder.bind(topics.get(position), listener, position);
     }
 
     @Override
@@ -55,8 +55,11 @@ public class RVTopicsAdapter extends RecyclerView.Adapter<RVTopicsAdapter.TopicV
             tv = itemView.findViewById(R.id.text_view_topic);
         }
 
-        void bind(final Topic item, final OnItemClickListener listener) {
-            String text = String.format("%s (%d)", item.getTitle(), item.getCountOfQuestions());
+        void bind(final Topic item, final OnItemClickListener listener, final int position) {
+            String text = String.format(tv.getContext().getString(R.string.card_topic),
+                    position,
+                    item.getTitle(),
+                    item.getCountOfQuestions());
             tv.setText(text);
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {

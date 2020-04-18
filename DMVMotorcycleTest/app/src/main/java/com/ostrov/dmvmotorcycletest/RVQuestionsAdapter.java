@@ -24,11 +24,13 @@ public class RVQuestionsAdapter extends RecyclerView.Adapter<RVQuestionsAdapter.
     private ArrayList<Question> questions;
     private Context context;
     private boolean isChecked;
+    private boolean isChangeRB;
 
-    RVQuestionsAdapter(ArrayList<Question> questions, Context context){
+    RVQuestionsAdapter(ArrayList<Question> questions, Context context, boolean isChangeRB){
         this.context = context;
         this.questions = questions;
         this.isChecked = false;
+        this.isChangeRB = isChangeRB;
     }
 
     @Override
@@ -61,6 +63,7 @@ public class RVQuestionsAdapter extends RecyclerView.Adapter<RVQuestionsAdapter.
         }
         // clear view attributes
         holder.rg.clearCheck();
+        holder.rg.setEnabled(isChangeRB);
         holder.answerA.setBackgroundColor(0);
         holder.answerB.setBackgroundColor(0);
         holder.answerC.setBackgroundColor(0);
@@ -121,6 +124,9 @@ public class RVQuestionsAdapter extends RecyclerView.Adapter<RVQuestionsAdapter.
                 e.printStackTrace();
             }
         }
+        holder.answerA.setClickable(isChangeRB);
+        holder.answerB.setClickable(isChangeRB);
+        holder.answerC.setClickable(isChangeRB);
     }
 
     private void setColor(QuestionViewHolder holder, int num, int color) {
@@ -144,6 +150,12 @@ public class RVQuestionsAdapter extends RecyclerView.Adapter<RVQuestionsAdapter.
 
     void setIsChecked() {
         this.isChecked = true;
+        this.isChangeRB = false;
+        this.notifyDataSetChanged();
+    }
+
+    void setIsChangeRB(boolean ch) {
+        this.isChangeRB = ch;
         this.notifyDataSetChanged();
     }
 

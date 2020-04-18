@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     LinearLayoutManager llm;
     RVQuestionsAdapter adapter;
     ArrayList<Question> questions;
-    String json = "";
     int countQuestions = 0;
 
     @Override
@@ -60,14 +59,13 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         textViewResult = findViewById(R.id.textViewResult);
         rv_questions = findViewById(R.id.rv_questions);
         llm = new LinearLayoutManager(this);
         rv_questions.setLayoutManager(llm);
 
         try {
-            json = loadJSONFromAsset();
+            String json = loadJSONFromAsset();
             ObjectMapper objectMapper = new ObjectMapper();
             quiz = objectMapper.readValue(json, Quiz.class);
             countQuestions = quiz.getCountOfTopics();
@@ -99,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     /** Initialize adapter for test */
     private void initializeAdapter() {
         questions = generateListOfQuestions(quiz);
-        adapter = new RVQuestionsAdapter(questions, this);
+        adapter = new RVQuestionsAdapter(questions, this, true);
         rv_questions.setAdapter(adapter);
     }
 
@@ -174,21 +172,35 @@ public class MainActivity extends AppCompatActivity {
         builder.setMessage(R.string.question_start);
         builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                textViewResult.setText("");
-                textViewResult.setVisibility(View.GONE);
-                for (Question q : questions)
-                    q.clearSelectedAnswer();
-                initializeAdapter();
+                getAnswerInfo();
             }
         });
         builder.setNegativeButton(R.string.cancel, null);
         builder.create().show();
     }
 
+    private void getAnswerInfo() {
+        textViewResult.setText("");
+        textViewResult.setVisibility(View.GONE);
+        for (Question q : questions)
+            q.clearSelectedAnswer();
+        initializeAdapter();
+    }
+
     /** Read all questions */
     public void onClickReadQuestions() {
-        Intent intent = new Intent(MainActivity.this, QuestionsActivity.class);
-        intent.putExtra(getString(R.string.json), json);
-        startActivity(intent);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.see_all_questions);
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                getAnswerInfo();
+
+                Intent intent = new Intent(MainActivity.this, TopicsActivity.class);
+                intent.putExtra(getString(R.string.intent_quiz), quiz);
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, null);
+        builder.create().show();
     }
 }

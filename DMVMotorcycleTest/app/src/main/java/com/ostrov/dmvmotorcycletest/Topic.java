@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -12,7 +13,7 @@ import java.util.ArrayList;
         "title",
         "questions"
 })
-public class Topic {
+public class Topic implements Serializable {
     @JsonProperty("title")
     private String title;
     @JsonProperty("questions")

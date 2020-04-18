@@ -2,7 +2,6 @@
     <string name="app_name">Motorcycle Test</string>
     <string name="file">source_file.json</string>
     <string name="standard_charsets">UTF-8</string>
-    <string name="json">JSON</string>
 
     <!-- For dialog -->
     <string name="btn_new_test">Start test</string>
@@ -16,6 +15,7 @@
     <string name="submit">Submit</string>
     <string name="alert">Please answer all of the following questions.</string>
     <string name="ok">OK</string>
+    <string name="see_all_questions">Do you want to look all questions? Your test answers will be cancel.</string>
 
     <!-- For CardView -->
     <string name="q">Q %1$d: %2$s</string>
@@ -26,4 +26,11 @@
     <!-- For result -->
     <string name="fail">Fail</string>
     <string name="pass">Pass</string>
+
+    <!-- For intent -->
+    <string name="intent_topic">TOPIC</string>
+    <string name="intent_quiz">QUIZ</string>
+
+    <!-- For Topic list -->
+    <string name="card_topic">T%d: %s (%d questions)</string>
 </resources>
