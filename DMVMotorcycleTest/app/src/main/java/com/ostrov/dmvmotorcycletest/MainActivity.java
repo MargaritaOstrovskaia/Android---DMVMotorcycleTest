@@ -1,15 +1,15 @@
 package com.ostrov.dmvmotorcycletest;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,16 +26,31 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     TextView textViewResult;
     Quiz quiz;
-    RecyclerView rv;
+    RecyclerView rv_questions;
     LinearLayoutManager llm;
-    RVAdapter adapter;
+    RVQuestionsAdapter adapter;
     ArrayList<Question> questions;
+    String json = "";
     int countQuestions = 0;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.action_start:
+                onClickNewTest();
+                break;
+            case R.id.action_read:
+                onClickReadQuestions();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -47,12 +62,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         textViewResult = findViewById(R.id.textViewResult);
-        rv = findViewById(R.id.rv);
+        rv_questions = findViewById(R.id.rv_questions);
         llm = new LinearLayoutManager(this);
-        rv.setLayoutManager(llm);
+        rv_questions.setLayoutManager(llm);
 
         try {
-            String json = loadJSONFromAsset();
+            json = loadJSONFromAsset();
             ObjectMapper objectMapper = new ObjectMapper();
             quiz = objectMapper.readValue(json, Quiz.class);
             countQuestions = quiz.getCountOfTopics();
@@ -84,8 +99,8 @@ public class MainActivity extends AppCompatActivity {
     /** Initialize adapter for test */
     private void initializeAdapter() {
         questions = generateListOfQuestions(quiz);
-        adapter = new RVAdapter(questions, this);
-        rv.setAdapter(adapter);
+        adapter = new RVQuestionsAdapter(questions, this);
+        rv_questions.setAdapter(adapter);
     }
 
     /** Create new list of questions */
@@ -154,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /** Start new test */
-    public void onClickNewTest(MenuItem item) {
+    public void onClickNewTest() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.question_start);
         builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
@@ -168,5 +183,12 @@ public class MainActivity extends AppCompatActivity {
         });
         builder.setNegativeButton(R.string.cancel, null);
         builder.create().show();
+    }
+
+    /** Read all questions */
+    public void onClickReadQuestions() {
+        Intent intent = new Intent(MainActivity.this, QuestionsActivity.class);
+        intent.putExtra(getString(R.string.json), json);
+        startActivity(intent);
     }
 }

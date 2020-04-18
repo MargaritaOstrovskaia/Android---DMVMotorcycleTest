@@ -7,6 +7,11 @@
         android:id="@+id/action_start"
         android:icon="@drawable/ic_action_start_test"
         android:title="@string/btn_new_test"
-        app:showAsAction="always"
-        android:onClick="onClickNewTest"/>
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_read"
+        android:icon="@drawable/ic_action_read"
+        android:title="@string/btn_read_questions"
+        app:showAsAction="ifRoom" />
 </menu>

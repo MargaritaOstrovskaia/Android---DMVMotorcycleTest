@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_topic"
+    style="@style/CardViewStyle"
+    app:cardBackgroundColor="@color/card_background_color_2" >
+
+    <TextView
+        android:id="@+id/text_view_topic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/card_padding"
+        android:text=""
+        android:textColor="@color/black_text_color"
+        android:textSize="@dimen/text_question_size"
+        android:focusable="true"
+        android:clickable="true" />
+
+</androidx.cardview.widget.CardView>

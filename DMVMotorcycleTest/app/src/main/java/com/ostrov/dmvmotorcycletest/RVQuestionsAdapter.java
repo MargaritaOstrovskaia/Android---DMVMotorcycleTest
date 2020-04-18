@@ -20,12 +20,12 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.QuestionViewHolder>{
+public class RVQuestionsAdapter extends RecyclerView.Adapter<RVQuestionsAdapter.QuestionViewHolder>{
     private ArrayList<Question> questions;
     private Context context;
     private boolean isChecked;
 
-    RVAdapter(ArrayList<Question> questions, Context context){
+    RVQuestionsAdapter(ArrayList<Question> questions, Context context){
         this.context = context;
         this.questions = questions;
         this.isChecked = false;
@@ -39,7 +39,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.QuestionViewHolder
     @NonNull
     @Override
     public QuestionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_question, parent, false);
         return new QuestionViewHolder(view);
     }
 
@@ -159,7 +159,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.QuestionViewHolder
 
         QuestionViewHolder(View itemView) {
             super(itemView);
-            cv = itemView.findViewById(R.id.cv);
+            cv = itemView.findViewById(R.id.cv_question);
             rg = itemView.findViewById(R.id.rg);
             question = itemView.findViewById(R.id.question_text_view);
 

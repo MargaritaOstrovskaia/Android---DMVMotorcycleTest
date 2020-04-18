@@ -1,17 +1,9 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cv"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="@dimen/card_margin_vertical"
-    android:layout_marginBottom="@dimen/card_margin_vertical"
-    android:layout_marginRight="@dimen/card_margin_horizontal"
-    android:layout_marginLeft="@dimen/card_margin_horizontal"
-    app:cardBackgroundColor="@color/card_background_color_1"
-    app:cardElevation="@dimen/card_elevation"
-    app:cardCornerRadius="@dimen/card_corner_radius">
+    android:id="@+id/cv_question"
+    style="@style/CardViewStyle"
+    app:cardBackgroundColor="@color/card_background_color_1" >
 
     <LinearLayout
         android:layout_width="match_parent"
